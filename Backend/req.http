@@ -1,0 +1,12 @@
+###create doctor
+http://localhost:5000/doctor-api
+Content-Type: application/json
+
+{
+    "name":"Dr Meghana",
+    "specialization":"Neurologist",
+    "experience":8,
+    "email":"meghana@hospital.com",
+    "phone":"9876543210",
+    "qualification":"MBBS, MD"
+}
