@@ -364,5 +364,4 @@ The frontend communicates with the backend using REST APIs.
 
 **Team-30**  
 B.Tech – Anurag University
-
 ---
