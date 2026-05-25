@@ -103,7 +103,7 @@ function Home() {
             </div>
 
           </div>
-          
+
           {/* RIGHT */}
 
           <div className="relative">
@@ -578,8 +578,8 @@ function Home() {
 
               <div className="flex flex-col gap-4 text-gray-400">
 
-                <p>support@caresync.com</p>
-                <p>+91 98765 43210</p>
+                <p>geetavarshini29@gmail.com</p>
+                <p>+91 78160 06928</p>
                 <p>Hyderabad, India</p>
 
               </div>
@@ -598,33 +598,7 @@ function Home() {
 
             </p>
 
-            <div className="flex gap-5 text-2xl">
-
-              <span className="cursor-pointer hover:text-cyan-400 transition">
-
-                🌐
-
-              </span>
-
-              <span className="cursor-pointer hover:text-cyan-400 transition">
-
-                📘
-
-              </span>
-
-              <span className="cursor-pointer hover:text-cyan-400 transition">
-
-                📸
-
-              </span>
-
-              <span className="cursor-pointer hover:text-cyan-400 transition">
-
-                💼
-
-              </span>
-
-            </div>
+            
 
           </div>
 
