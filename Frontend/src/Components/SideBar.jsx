@@ -89,26 +89,46 @@ function Sidebar({
 
   return (
 
-    <aside
+    <>
 
-      className={`
+      <button
+        type="button"
+        aria-label="Close menu"
+        onClick={toggleSidebar}
+        className={`fixed inset-0 z-40 bg-black/50
+        transition-opacity duration-300
+        ${
+          isOpen
+            ? "opacity-100"
+            : "pointer-events-none opacity-0"
+        }`}
+      />
 
-        relative z-40
+      <aside
 
-        bg-[#070B1D]/95 backdrop-blur-2xl
+        className={`
 
-        border-r border-cyan-400/10
+          fixed inset-y-0 left-0 z-50
+          w-[min(20rem,calc(100vw-1rem))]
 
-        transition-all duration-500 overflow-hidden
+          bg-[#070B1D]/95 backdrop-blur-2xl
 
-        ${isOpen ? "w-80" : "w-0"}
+          border-r border-cyan-400/10
 
-      `}
-    >
+          transition-transform duration-300
 
-      <div className="w-80 h-screen overflow-y-auto flex flex-col">
+          ${
+            isOpen
+              ? "translate-x-0"
+              : "-translate-x-full"
+          }
 
-        <div className="p-7 border-b border-white/10">
+        `}
+      >
+
+      <div className="h-screen overflow-y-auto flex flex-col">
+
+        <div className="p-5 sm:p-7 border-b border-white/10">
 
           <div className="flex items-start justify-between gap-4">
 
@@ -129,7 +149,7 @@ function Sidebar({
 
               </div>
 
-              <h1 className="text-4xl font-black tracking-tight mt-5">
+              <h1 className="text-3xl sm:text-4xl font-black tracking-tight mt-5">
 
                 <span className="text-white">
 
@@ -196,7 +216,7 @@ function Sidebar({
 
         </div>
 
-        <div className="flex-1 p-6">
+        <div className="flex-1 p-5 sm:p-6">
 
           <p
 
@@ -273,7 +293,7 @@ function Sidebar({
 
         </div>
 
-        <div className="p-6 border-t border-white/10">
+        <div className="p-5 sm:p-6 border-t border-white/10">
 
           <button
 
@@ -300,6 +320,8 @@ function Sidebar({
       </div>
 
     </aside>
+
+    </>
 
   );
 

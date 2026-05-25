@@ -1,4 +1,23 @@
+import {
+  useNavigate
+} from "react-router-dom";
+
 function Home() {
+
+  const navigate =
+    useNavigate();
+
+  const scrollToSection =
+    (targetId) => {
+
+      document
+        .getElementById(targetId)
+        ?.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+
+    };
 
   return (
 
@@ -16,7 +35,7 @@ function Home() {
 
       <section
         id="home"
-        className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-16 lg:py-28"
+        className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-12 sm:py-16 lg:py-24"
       >
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -25,13 +44,13 @@ function Home() {
 
           <div>
 
-            <span className="bg-cyan-500/10 border border-cyan-400/20 text-cyan-300 px-5 py-2 rounded-full text-sm font-semibold backdrop-blur-md">
+            <span className="bg-cyan-500/10 border border-cyan-400/20 text-cyan-300 px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-semibold backdrop-blur-md">
 
               FUTURE OF HEALTHCARE
 
             </span>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black leading-tight mt-8 lg:mt-10">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black leading-tight mt-6 lg:mt-10">
 
               Intelligent
               <span className="text-cyan-400">
@@ -44,7 +63,7 @@ function Home() {
 
             </h1>
 
-            <p className="text-gray-400 text-base sm:text-xl leading-relaxed mt-6 lg:mt-10 max-w-2xl">
+            <p className="text-gray-400 text-sm sm:text-lg leading-relaxed mt-5 lg:mt-8 max-w-2xl">
 
               CareSync transforms hospital operations
               through AI-powered healthcare workflows,
@@ -57,13 +76,25 @@ function Home() {
 
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-8 lg:mt-12">
 
-              <button className="bg-cyan-400 text-black px-6 sm:px-8 py-4 rounded-2xl text-base sm:text-lg font-bold hover:scale-105 transition shadow-2xl shadow-cyan-500/30">
+              <button
+                type="button"
+                onClick={() =>
+                  navigate("/register")
+                }
+                className="bg-cyan-400 text-black px-6 sm:px-8 py-3.5 sm:py-4 rounded-2xl text-sm sm:text-base font-bold hover:scale-105 transition shadow-2xl shadow-cyan-500/30"
+              >
 
                 Get Started
 
               </button>
 
-              <button className="border border-white/10 bg-white/5 backdrop-blur-md px-6 sm:px-8 py-4 rounded-2xl text-base sm:text-lg font-semibold hover:bg-white/10 transition">
+              <button
+                type="button"
+                onClick={() =>
+                  scrollToSection("services")
+                }
+                className="border border-white/10 bg-white/5 backdrop-blur-md px-6 sm:px-8 py-3.5 sm:py-4 rounded-2xl text-sm sm:text-base font-semibold hover:bg-white/10 transition"
+              >
 
                 Explore Platform
 
@@ -80,13 +111,13 @@ function Home() {
 
               <div>
 
-                <h2 className="text-4xl sm:text-5xl font-black text-cyan-400">
+                <h2 className="text-3xl sm:text-5xl font-black text-cyan-400">
 
                   50+
 
                 </h2>
 
-                <p className="text-gray-400 mt-3">
+                <p className="text-gray-400 mt-2 text-sm sm:text-base">
 
                   Hospital Branches
 
@@ -96,13 +127,13 @@ function Home() {
 
               <div>
 
-                <h2 className="text-4xl sm:text-5xl font-black text-cyan-400">
+                <h2 className="text-3xl sm:text-5xl font-black text-cyan-400">
 
                   10K+
 
                 </h2>
 
-                <p className="text-gray-400 mt-3">
+                <p className="text-gray-400 mt-2 text-sm sm:text-base">
 
                   Patients Served
 
@@ -112,13 +143,13 @@ function Home() {
 
               <div>
 
-                <h2 className="text-4xl sm:text-5xl font-black text-cyan-400">
+                <h2 className="text-3xl sm:text-5xl font-black text-cyan-400">
 
                   500+
 
                 </h2>
 
-                <p className="text-gray-400 mt-3">
+                <p className="text-gray-400 mt-2 text-sm sm:text-base">
 
                   Specialist Doctors
 
@@ -134,7 +165,7 @@ function Home() {
 
           <div className="relative">
 
-            <div className="bg-white/5 border border-white/10 backdrop-blur-xl rounded-[2.5rem] p-6 shadow-2xl">
+            <div className="bg-white/5 border border-white/10 backdrop-blur-xl rounded-3xl sm:rounded-[2.5rem] p-3 sm:p-6 shadow-2xl">
 
               <img
 
@@ -142,7 +173,7 @@ function Home() {
 
                 alt="Healthcare"
 
-                className="rounded-[2rem] h-80 md:h-[520px] lg:h-[600px] w-full object-cover"
+                className="rounded-3xl sm:rounded-[2rem] h-64 sm:h-80 md:h-[520px] lg:h-[560px] w-full object-cover"
 
               />
 
@@ -154,7 +185,7 @@ function Home() {
 
               <div className="flex items-center gap-4">
 
-                <div className="w-16 h-16 rounded-2xl bg-cyan-400 flex items-center justify-center text-3xl">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-cyan-400 flex items-center justify-center text-2xl sm:text-3xl">
 
                   🚑
 
@@ -162,7 +193,7 @@ function Home() {
 
                 <div>
 
-                  <h3 className="text-2xl font-bold">
+                  <h3 className="text-xl sm:text-2xl font-bold">
 
                     24/7 Care
 
@@ -199,20 +230,20 @@ function Home() {
 
           <div className="text-center">
 
-            <span className="text-cyan-400 font-semibold uppercase tracking-widest">
+            <span className="text-cyan-400 text-xs sm:text-sm font-semibold uppercase tracking-widest">
 
               Why Choose CareSync
 
             </span>
 
-            <h2 className="text-3xl sm:text-5xl font-bold mt-6">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold mt-5 sm:mt-6">
 
               Delivering Smarter
               Healthcare Experiences
 
             </h2>
 
-            <p className="text-gray-400 text-base sm:text-xl mt-6 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-gray-400 text-sm sm:text-lg mt-5 sm:mt-6 max-w-3xl mx-auto leading-relaxed">
 
               CareSync combines modern technology,
               expert healthcare professionals,
@@ -229,7 +260,7 @@ function Home() {
 
             {/* CARD */}
 
-            <div className="bg-white/5 border border-white/10 backdrop-blur-xl rounded-3xl p-8 hover:-translate-y-2 transition duration-300">
+            <div className="bg-white/5 border border-white/10 backdrop-blur-xl rounded-3xl p-6 sm:p-8 hover:-translate-y-2 transition duration-300">
 
               <div className="text-5xl">
 
@@ -237,13 +268,13 @@ function Home() {
 
               </div>
 
-              <h3 className="text-2xl font-bold mt-6">
+              <h3 className="text-xl sm:text-2xl font-bold mt-5 sm:mt-6">
 
                 Expert Doctors
 
               </h3>
 
-              <p className="text-gray-400 mt-4 leading-relaxed">
+              <p className="text-gray-400 text-sm sm:text-base mt-4 leading-relaxed">
 
                 Highly experienced specialists
                 delivering world-class healthcare.
@@ -254,7 +285,7 @@ function Home() {
 
             {/* CARD */}
 
-            <div className="bg-white/5 border border-white/10 backdrop-blur-xl rounded-3xl p-8 hover:-translate-y-2 transition duration-300">
+            <div className="bg-white/5 border border-white/10 backdrop-blur-xl rounded-3xl p-6 sm:p-8 hover:-translate-y-2 transition duration-300">
 
               <div className="text-5xl">
 
@@ -262,13 +293,13 @@ function Home() {
 
               </div>
 
-              <h3 className="text-2xl font-bold mt-6">
+              <h3 className="text-xl sm:text-2xl font-bold mt-5 sm:mt-6">
 
                 Emergency Care
 
               </h3>
 
-              <p className="text-gray-400 mt-4 leading-relaxed">
+              <p className="text-gray-400 text-sm sm:text-base mt-4 leading-relaxed">
 
                 Advanced emergency response
                 and critical care facilities.
@@ -279,7 +310,7 @@ function Home() {
 
             {/* CARD */}
 
-            <div className="bg-white/5 border border-white/10 backdrop-blur-xl rounded-3xl p-8 hover:-translate-y-2 transition duration-300">
+            <div className="bg-white/5 border border-white/10 backdrop-blur-xl rounded-3xl p-6 sm:p-8 hover:-translate-y-2 transition duration-300">
 
               <div className="text-5xl">
 
@@ -287,13 +318,13 @@ function Home() {
 
               </div>
 
-              <h3 className="text-2xl font-bold mt-6">
+              <h3 className="text-xl sm:text-2xl font-bold mt-5 sm:mt-6">
 
                 Smart Appointments
 
               </h3>
 
-              <p className="text-gray-400 mt-4 leading-relaxed">
+              <p className="text-gray-400 text-sm sm:text-base mt-4 leading-relaxed">
 
                 Digital appointment booking
                 and healthcare management.
@@ -304,7 +335,7 @@ function Home() {
 
             {/* CARD */}
 
-            <div className="bg-white/5 border border-white/10 backdrop-blur-xl rounded-3xl p-8 hover:-translate-y-2 transition duration-300">
+            <div className="bg-white/5 border border-white/10 backdrop-blur-xl rounded-3xl p-6 sm:p-8 hover:-translate-y-2 transition duration-300">
 
               <div className="text-5xl">
 
@@ -312,13 +343,13 @@ function Home() {
 
               </div>
 
-              <h3 className="text-2xl font-bold mt-6">
+              <h3 className="text-xl sm:text-2xl font-bold mt-5 sm:mt-6">
 
                 Modern Facilities
 
               </h3>
 
-              <p className="text-gray-400 mt-4 leading-relaxed">
+              <p className="text-gray-400 text-sm sm:text-base mt-4 leading-relaxed">
 
                 State-of-the-art hospital
                 infrastructure and technology.
@@ -346,20 +377,20 @@ function Home() {
 
           <div className="text-center">
 
-            <span className="text-cyan-400 font-semibold uppercase tracking-widest">
+            <span className="text-cyan-400 text-xs sm:text-sm font-semibold uppercase tracking-widest">
 
               Our Specialties
 
             </span>
 
-            <h2 className="text-3xl sm:text-5xl font-bold mt-6">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold mt-5 sm:mt-6">
 
               Advanced Medical
               Specialties
 
             </h2>
 
-            <p className="text-gray-400 text-base sm:text-xl mt-6 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-gray-400 text-sm sm:text-lg mt-5 sm:mt-6 max-w-3xl mx-auto leading-relaxed">
 
               CareSync offers advanced healthcare services
               with expert doctors and cutting-edge medical technologies.
@@ -388,13 +419,13 @@ function Home() {
 
               <div className="p-8">
 
-                <h3 className="text-2xl sm:text-3xl font-bold">
+                <h3 className="text-xl sm:text-2xl font-bold">
 
                   Cardiology
 
                 </h3>
 
-                <p className="text-gray-400 mt-4 leading-relaxed">
+                <p className="text-gray-400 text-sm sm:text-base mt-4 leading-relaxed">
 
                   Advanced heart care services
                   with experienced cardiologists.
@@ -421,13 +452,13 @@ function Home() {
 
               <div className="p-8">
 
-                <h3 className="text-2xl sm:text-3xl font-bold">
+                <h3 className="text-xl sm:text-2xl font-bold">
 
                   Neurology
 
                 </h3>
 
-                <p className="text-gray-400 mt-4 leading-relaxed">
+                <p className="text-gray-400 text-sm sm:text-base mt-4 leading-relaxed">
 
                   Specialized neurological treatments
                   and advanced brain care.
@@ -454,13 +485,13 @@ function Home() {
 
               <div className="p-8">
 
-                <h3 className="text-2xl sm:text-3xl font-bold">
+                <h3 className="text-xl sm:text-2xl font-bold">
 
                   Pediatrics
 
                 </h3>
 
-                <p className="text-gray-400 mt-4 leading-relaxed">
+                <p className="text-gray-400 text-sm sm:text-base mt-4 leading-relaxed">
 
                   Compassionate child healthcare
                   and wellness services.
@@ -519,29 +550,53 @@ function Home() {
 
               <div className="flex flex-col gap-4 text-gray-400">
 
-                <a href="#" className="hover:text-cyan-400 transition">
+                <button
+                  type="button"
+                  onClick={() =>
+                    scrollToSection("home")
+                  }
+                  className="text-left hover:text-cyan-400 transition"
+                >
 
                   Home
 
-                </a>
+                </button>
 
-                <a href="#" className="hover:text-cyan-400 transition">
-
-                  About
-
-                </a>
-
-                <a href="#" className="hover:text-cyan-400 transition">
+                <button
+                  type="button"
+                  onClick={() =>
+                    scrollToSection("services")
+                  }
+                  className="text-left hover:text-cyan-400 transition"
+                >
 
                   Services
 
-                </a>
+                </button>
 
-                <a href="#" className="hover:text-cyan-400 transition">
+                <button
+                  type="button"
+                  onClick={() =>
+                    scrollToSection("doctors")
+                  }
+                  className="text-left hover:text-cyan-400 transition"
+                >
+
+                  Doctors
+
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() =>
+                    scrollToSection("contact")
+                  }
+                  className="text-left hover:text-cyan-400 transition"
+                >
 
                   Contact
 
-                </a>
+                </button>
 
               </div>
 

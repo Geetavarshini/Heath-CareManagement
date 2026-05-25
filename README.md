@@ -28,11 +28,11 @@ The system follows a modular architecture using modern web technologies for scal
 
 ---
 
-# 🏗️ 2. System Architecture
+#  2. System Architecture
 
 The project follows a **Full Stack Client-Server Architecture**.
 
-```text
+```
 Frontend (React.js)
         │
         ▼
@@ -47,7 +47,7 @@ MongoDB Database
 
 ---
 
-# 🎨 3. Frontend Architecture
+# 3. Frontend Architecture
 
 The frontend is developed using **React.js** with reusable components and client-side routing.
 
@@ -97,9 +97,9 @@ The backend is developed using **Node.js** and **Express.js** following REST API
 
 ---
 
-# 📂 5. Complete Project Structure
+#  5. Complete Project Structure
 
-```text
+```
 Health-CareManagement/
 │
 ├── frontend/
@@ -129,7 +129,7 @@ Health-CareManagement/
 
 ---
 
-# 🚀 6. Installation & Setup
+#  6. Installation & Setup
 
 ## 1️⃣ Clone Repository
 
@@ -147,7 +147,7 @@ cd Heath-CareManagement
 
 ---
 
-# 🖥️ Frontend Setup
+# Frontend Setup
 
 ## Install Frontend Dependencies
 
@@ -164,13 +164,7 @@ npm install
 npm run dev
 ```
 
-Frontend runs on:
-
-```text
-http://localhost:5173
-```
-
----
+Frontend runs locally
 
 # ⚙️ Backend Setup
 
@@ -185,13 +179,6 @@ npm install
 
 ## Create `.env` File
 
-```env
-PORT=4000
-DB_URL=your_mongodb_connection_string
-JWT_SECRET_KEY=your_secret_key
-```
-
----
 
 ## Start Backend Server
 
@@ -205,15 +192,11 @@ or
 nodemon server.js
 ```
 
-Backend runs on:
-
-```text
-http://localhost:4000
-```
+Backend runs locally
 
 ---
 
-# 📦 7. Technology Stack
+#  7. Technology Stack
 
 | Technology | Purpose |
 | :--- | :--- |
@@ -233,7 +216,7 @@ http://localhost:4000
 
 ---
 
-# 🌐 8. Frontend Routing Structure
+#  8. Frontend Routing Structure
 
 | Route | Purpose |
 | :--- | :--- |
@@ -246,7 +229,7 @@ http://localhost:4000
 
 ---
 
-# 🔗 9. Backend API Routes
+#  9. Backend API Routes
 
 ## Authentication Routes
 

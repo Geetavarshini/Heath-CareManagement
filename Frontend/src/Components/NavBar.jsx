@@ -1,23 +1,81 @@
 import { NavLink } from "react-router-dom";
 import {
+  useNavigate
+} from "react-router-dom";
+import {
   Menu
 } from "lucide-react";
 
+const navItems = [
+  {
+    label: "Home",
+    targetId: "home"
+  },
+  {
+    label: "Services",
+    targetId: "services"
+  },
+  {
+    label: "Doctors",
+    targetId: "doctors"
+  },
+  {
+    label: "Branches",
+    targetId: "branches"
+  },
+  {
+    label: "Contact",
+    targetId: "contact"
+  }
+];
+
 function Navbar({ toggleSidebar }) {
+
+  const navigate =
+    useNavigate();
+
+  const scrollToSection =
+    (targetId) => {
+
+      const scroll = () => {
+
+        document
+          .getElementById(targetId)
+          ?.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+
+      };
+
+      if (window.location.pathname !== "/") {
+
+        navigate("/");
+        setTimeout(scroll, 100);
+
+      }
+
+      else {
+
+        scroll();
+
+      }
+
+    };
 
   return (
 
-    <nav className="relative z-50 h-24 border-b border-white/10
+    <nav className="relative z-50 h-20 sm:h-24 border-b border-white/10
 
     bg-[#070B1D]/90 backdrop-blur-xl">
 
-      <div className="max-w-[1600px] mx-auto h-full px-6 lg:px-12
+      <div className="max-w-[1600px] mx-auto h-full px-3 sm:px-6 lg:px-12
 
       flex items-center justify-between">
 
         {/* LEFT */}
 
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-2 sm:gap-6">
 
           {/* BURGER */}
 
@@ -25,7 +83,7 @@ function Navbar({ toggleSidebar }) {
 
             onClick={toggleSidebar}
 
-            className="group w-14 h-14 rounded-2xl
+            className="group w-11 h-11 sm:w-14 sm:h-14 rounded-2xl
 
             bg-white/5 border border-white/10
 
@@ -36,7 +94,7 @@ function Navbar({ toggleSidebar }) {
           >
 
             <Menu
-              size={28}
+              size={24}
               className="text-cyan-300"
             />
 
@@ -44,7 +102,7 @@ function Navbar({ toggleSidebar }) {
 
           {/* LOGO */}
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-4">
 
             {/* LOGO ICON */}
 
@@ -52,13 +110,13 @@ function Navbar({ toggleSidebar }) {
 
               <div className="absolute inset-0 bg-cyan-400 blur-xl opacity-40 rounded-full" />
 
-              <div className="relative w-14 h-14 rounded-2xl
+              <div className="relative w-10 h-10 sm:w-14 sm:h-14 rounded-2xl
 
               bg-gradient-to-br from-cyan-300 to-blue-500
 
               flex items-center justify-center
 
-              text-black text-2xl font-black
+              text-black text-lg sm:text-2xl font-black
 
               shadow-xl shadow-cyan-500/30">
 
@@ -72,7 +130,7 @@ function Navbar({ toggleSidebar }) {
 
             <div>
 
-              <h1 className="text-3xl font-black tracking-tight">
+              <h1 className="text-xl sm:text-3xl font-black tracking-tight">
 
                 <span className="text-white">
 
@@ -88,7 +146,7 @@ function Navbar({ toggleSidebar }) {
 
               </h1>
 
-              <p className="text-xs uppercase tracking-[0.35em] text-gray-500 mt-1">
+              <p className="hidden sm:block text-xs uppercase tracking-[0.35em] text-gray-500 mt-1">
 
                 Intelligent Healthcare
 
@@ -104,15 +162,18 @@ function Navbar({ toggleSidebar }) {
 
         <div className="hidden xl:flex items-center gap-10">
 
-          {["Home", "Services", "Doctors", "Branches", "Contact"]
+          {navItems
+          .map(({ label, targetId }) => (
 
-          .map((item, index) => (
+            <button
 
-            <a
+              key={targetId}
 
-              key={index}
+              type="button"
 
-              href="#"
+              onClick={() =>
+                scrollToSection(targetId)
+              }
 
               className="text-gray-300 hover:text-cyan-400
 
@@ -120,9 +181,9 @@ function Navbar({ toggleSidebar }) {
 
             >
 
-              {item}
+              {label}
 
-            </a>
+            </button>
 
           ))}
 
@@ -130,13 +191,13 @@ function Navbar({ toggleSidebar }) {
 
         {/* RIGHT */}
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 sm:gap-4">
 
           {/* LOGIN */}
 
           <NavLink to="/login">
 
-  <button className="hidden sm:flex h-12 px-6 rounded-2xl bg-white/5 border border-white/10 items-center justify-center text-gray-200 font-semibold hover:bg-white/10 transition duration-300">
+  <button className="flex h-10 sm:h-12 px-3 sm:px-6 rounded-2xl bg-white/5 border border-white/10 items-center justify-center text-gray-200 text-sm sm:text-base font-semibold hover:bg-white/10 transition duration-300">
         Login
     </button>
 
@@ -146,7 +207,7 @@ function Navbar({ toggleSidebar }) {
 
           <NavLink to="/register">
 
-         <button className="h-12 px-7 rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-500 text-black font-black hover:scale-105 transition duration-300 shadow-xl shadow-cyan-500/20">
+         <button className="h-10 sm:h-12 px-3 sm:px-7 rounded-2xl bg-gradient-to-r from-cyan-400 to-blue-500 text-black text-sm sm:text-base font-black hover:scale-105 transition duration-300 shadow-xl shadow-cyan-500/20">
             Register
 
         </button>
