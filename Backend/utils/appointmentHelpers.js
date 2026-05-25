@@ -12,26 +12,22 @@ export const normalizeId =
 
 export const APPOINTMENT_STATUSES = [
   "pending",
-  "approved",
   "accepted",
   "rejected",
+  "missed",
   "completed",
   "cancelled"
 ];
 
 export const normalizeAppointmentStatus =
   (status) =>
-    status;
+    status === "approved"
+      ? "accepted"
+      : status;
 
 const statusTransitions = {
   pending: [
-    "approved",
     "accepted",
-    "rejected",
-    "cancelled"
-  ],
-  approved: [
-    "completed",
     "rejected",
     "cancelled"
   ],
@@ -41,9 +37,59 @@ const statusTransitions = {
     "cancelled"
   ],
   rejected: [],
+  missed: [],
   completed: [],
   cancelled: []
 };
+
+export const markMissedAppointments =
+  async () => {
+
+    await appointmentModel.updateMany(
+      {
+        status: "approved"
+      },
+      {
+        $set: {
+          status: "accepted"
+        }
+      }
+    );
+
+    const now =
+      new Date();
+
+    const today =
+      now.toISOString().slice(0, 10);
+
+    const currentTime =
+      now.toTimeString().slice(0, 5);
+
+    return appointmentModel.updateMany(
+      {
+        status: "pending",
+        $or: [
+          {
+            appointmentDate: {
+              $lt: today
+            }
+          },
+          {
+            appointmentDate: today,
+            appointmentTime: {
+              $lt: currentTime
+            }
+          }
+        ]
+      },
+      {
+        $set: {
+          status: "missed"
+        }
+      }
+    );
+
+  };
 
 export const getAllowedStatusTransitions =
   (currentStatus) =>
@@ -207,7 +253,8 @@ export const findActiveDoctorAppointment =
       status: {
         $nin: [
           "cancelled",
-          "rejected"
+          "rejected",
+          "missed"
         ]
       }
 
@@ -244,7 +291,8 @@ export const findActivePatientAppointment =
       status: {
         $nin: [
           "cancelled",
-          "rejected"
+          "rejected",
+          "missed"
         ]
       }
 
@@ -426,7 +474,8 @@ export const rescheduleAppointmentIfSlotAvailable =
     if (
       [
         "cancelled",
-        "completed"
+        "completed",
+        "missed"
       ].includes(appointment.status)
     ) {
 
@@ -598,6 +647,15 @@ export const getCancellationError =
       return {
         status: 400,
         message: "Completed appointment cannot be cancelled"
+      };
+
+    }
+
+    if (appointment.status === "missed") {
+
+      return {
+        status: 400,
+        message: "Missed appointment cannot be cancelled"
       };
 
     }

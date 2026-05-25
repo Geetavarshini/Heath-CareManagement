@@ -886,7 +886,7 @@ function PatientDashboard() {
           onSubmit={updateProfile}
           className="mt-8 grid lg:grid-cols-2 gap-5 rounded-2xl border border-white/10 bg-white/5 p-6"
         >
-          {["name", "phone", "age", "email"].map((field) => (
+          {["name", "phone", "age"].map((field) => (
             <input
               key={field}
               name={field}
@@ -901,6 +901,11 @@ function PatientDashboard() {
               placeholder={field}
             />
           ))}
+          <div
+            className="flex h-12 items-center rounded-2xl border border-white/10 bg-black/20 px-4 text-gray-400"
+          >
+            {currentUser?.email}
+          </div>
           <select
             name="gender"
             value={profile.gender}

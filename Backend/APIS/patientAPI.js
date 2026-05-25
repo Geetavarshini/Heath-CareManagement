@@ -676,33 +676,14 @@ patientRoute.put(
 
       }
 
-      const normalizedEmail =
-        req.body.email?.toLowerCase()?.trim();
-
       if (
-        normalizedEmail &&
-        normalizedEmail !== patient.email
+        req.body.email &&
+        req.body.email.toLowerCase().trim() !== patient.email
       ) {
 
-        const emailExists =
-          await userModel.findOne({
-            email:
-              normalizedEmail,
-            _id: {
-              $ne: patient._id
-            }
-          });
-
-        if (emailExists) {
-
-          return res.status(400).json({
-            message: "Email already exists"
-          });
-
-        }
-
-        patient.email = normalizedEmail;
-        patient.isVerified = false;
+        return res.status(400).json({
+          message: "Email cannot be changed"
+        });
 
       }
 

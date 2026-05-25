@@ -57,11 +57,11 @@ const appointmentSchema =
 
           "pending",
 
-          "approved",
-
           "accepted",
 
           "rejected",
+
+          "missed",
 
           "completed",
 

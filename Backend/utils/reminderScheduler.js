@@ -32,7 +32,7 @@ const sendDueAppointmentReminders =
           status: {
             $in: [
               "pending",
-              "approved",
+              "accepted",
               "accepted"
             ]
           }

@@ -200,13 +200,6 @@ function UserManagement({
         gender:
           user.gender || "",
 
-        email:
-          user.email || "",
-
-        oldPassword: "",
-
-        password: "",
-
         specialization:
           user.specialization || "",
 
@@ -286,9 +279,7 @@ function UserManagement({
 
           "age",
 
-          "gender",
-
-          "email"
+          "gender"
 
         ];
 
@@ -309,20 +300,6 @@ function UserManagement({
           );
 
         });
-
-        if (editForm.password) {
-
-          formData.append(
-            "oldPassword",
-            editForm.oldPassword || ""
-          );
-
-          formData.append(
-            "password",
-            editForm.password
-          );
-
-        }
 
         if (editForm.profilePhoto) {
 
@@ -1129,39 +1106,6 @@ function UserManagement({
 
                 </>
               }
-
-              <input
-                type="email"
-                name="email"
-                autoComplete="off"
-                value={editForm.email || ""}
-                onChange={handleEditChange}
-                placeholder="Email"
-                className={inputClassName}
-              />
-
-              <input
-                type="password"
-                name="oldPassword"
-                autoComplete="current-password"
-                value={editForm.oldPassword || ""}
-                onChange={handleEditChange}
-                placeholder="Old Password"
-                required={Boolean(
-                  editForm.password
-                )}
-                className={inputClassName}
-              />
-
-              <input
-                type="password"
-                name="password"
-                autoComplete="new-password"
-                value={editForm.password || ""}
-                onChange={handleEditChange}
-                placeholder="New Password"
-                className={inputClassName}
-              />
 
               <input
                 type="file"

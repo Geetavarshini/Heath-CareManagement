@@ -1,17 +1,26 @@
 const statusStyles = {
-  approved: "bg-green-400",
   accepted: "bg-green-400",
   rejected: "bg-red-400",
   pending: "bg-yellow-300",
+  missed: "bg-gray-400",
   completed: "bg-blue-400",
   cancelled: "bg-orange-400"
 };
 
+const normalizeStatus =
+  (status) =>
+    status === "approved"
+      ? "accepted"
+      : status;
+
 export function StatusDot({ status }) {
+
+  const normalizedStatus =
+    normalizeStatus(status);
 
   return (
     <span
-      className={`inline-block h-3 w-3 rounded-full ${statusStyles[status] || "bg-gray-400"}`}
+      className={`inline-block h-3 w-3 rounded-full ${statusStyles[normalizedStatus] || "bg-gray-400"}`}
     />
   );
 

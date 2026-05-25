@@ -65,8 +65,6 @@ const buildUserUpdateData =
 
       "gender",
 
-      "email",
-
       ...extraFields
 
     ];
@@ -79,9 +77,7 @@ const buildUserUpdateData =
       ) {
 
         data[field] =
-          field === "email"
-            ? body[field].toLowerCase().trim()
-            : body[field];
+          body[field];
 
       }
 
@@ -118,34 +114,15 @@ const updateStaffMember =
 
       }
 
-      const normalizedEmail =
-        req.body.email?.toLowerCase()?.trim();
-
       if (
-        normalizedEmail &&
-        normalizedEmail !== user.email
+        req.body.email &&
+        req.body.email.toLowerCase().trim() !== user.email
       ) {
 
-        const emailExists =
-          await userModel.findOne({
-
-            email:
-              normalizedEmail,
-
-            _id: {
-              $ne: userId
-            }
-
-          });
-
-        if (emailExists) {
-
-          return res.status(400).json({
-            message:
-              `${label} email already exists`
-          });
-
-        }
+        return res.status(400).json({
+          message:
+            "Email cannot be changed"
+        });
 
       }
 
@@ -157,35 +134,10 @@ const updateStaffMember =
 
       if (req.body.password) {
 
-        if (!req.body.oldPassword) {
-
-          return res.status(400).json({
-            message:
-              "Old password is required"
-          });
-
-        }
-
-        const isOldPasswordValid =
-          await bcrypt.compare(
-            req.body.oldPassword,
-            user.password
-          );
-
-        if (!isOldPasswordValid) {
-
-          return res.status(400).json({
-            message:
-              "Old password is incorrect"
-          });
-
-        }
-
-        updateData.password =
-          await bcrypt.hash(
-            req.body.password,
-            10
-          );
+        return res.status(400).json({
+          message:
+            "Password cannot be changed by admin"
+        });
 
       }
 

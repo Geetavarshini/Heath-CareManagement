@@ -11,6 +11,9 @@ import { receptionistRoute } from "./APIS/receptionistApi.js";
 import { upload } from "./Config/multer.js";
 import { startAppointmentReminderScheduler } from "./utils/reminderScheduler.js";
 import {
+  markMissedAppointments
+} from "./utils/appointmentHelpers.js";
+import {
   verifyEmailTransporter
 } from "./Config/mailer.js";
 import multer from "multer";
@@ -52,6 +55,35 @@ app.use(
   "/uploads",
   express.static("uploads")
 );
+
+let lastMissedAppointmentCheck = 0;
+
+app.use(async (req, res, next) => {
+
+  try {
+
+    const now =
+      Date.now();
+
+    if (now - lastMissedAppointmentCheck > 60 * 1000) {
+
+      lastMissedAppointmentCheck = now;
+
+      await markMissedAppointments();
+
+    }
+
+    next();
+
+  }
+
+  catch (error) {
+
+    next(error);
+
+  }
+
+});
 
 
 app.use("/patient-api", patientRoute);
@@ -112,6 +144,25 @@ const startServer = async () => {
       console.log(`Server running on port ${PORT}`);
 
       verifyEmailTransporter();
+
+      markMissedAppointments().catch((error) =>
+        console.log(
+          "MISSED APPOINTMENT UPDATE ERROR:",
+          error.message
+        )
+      );
+
+      setInterval(
+        () => {
+          markMissedAppointments().catch((error) =>
+            console.log(
+              "MISSED APPOINTMENT UPDATE ERROR:",
+              error.message
+            )
+          );
+        },
+        60 * 1000
+      );
 
       startAppointmentReminderScheduler();
 
