@@ -102,65 +102,8 @@ function Home() {
 
             </div>
 
-            {/* STATS */}
-
-            <div
-              id="branches"
-              className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-10 lg:gap-14 mt-10 lg:mt-16"
-            >
-
-              <div>
-
-                <h2 className="text-3xl sm:text-5xl font-black text-cyan-400">
-
-                  50+
-
-                </h2>
-
-                <p className="text-gray-400 mt-2 text-sm sm:text-base">
-
-                  Hospital Branches
-
-                </p>
-
-              </div>
-
-              <div>
-
-                <h2 className="text-3xl sm:text-5xl font-black text-cyan-400">
-
-                  10K+
-
-                </h2>
-
-                <p className="text-gray-400 mt-2 text-sm sm:text-base">
-
-                  Patients Served
-
-                </p>
-
-              </div>
-
-              <div>
-
-                <h2 className="text-3xl sm:text-5xl font-black text-cyan-400">
-
-                  500+
-
-                </h2>
-
-                <p className="text-gray-400 mt-2 text-sm sm:text-base">
-
-                  Specialist Doctors
-
-                </p>
-
-              </div>
-
-            </div>
-
           </div>
-
+          
           {/* RIGHT */}
 
           <div className="relative">
