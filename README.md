@@ -1,105 +1,51 @@
-<div align="center">
+# Health Care Management System
 
-# 🏥 Health Care Management System  
-# ⚙️ Full Stack Architecture & Technical Documentation
+A full stack MERN-based Health Care Management System developed to digitize and simplify hospital operations. This application enables secure healthcare management through patient handling, doctor management, appointment scheduling, authentication, and dashboard-based workflows.
 
-This document serves as the complete technical documentation for the **Health Care Management System** project.  
-It explains the frontend architecture, backend architecture, routing system, authentication flow, database structure, API integration, installation setup, and complete project workflow.
-
-</div>
+The primary goal of this project was to understand how real-world healthcare systems are designed, connected, secured, and managed using modern full stack technologies.
 
 ---
 
-# 📌 1. Project Overview
+# Project Overview
 
-The **Health Care Management System** is a full-stack web application developed to simplify hospital and healthcare operations digitally.
+The Health Care Management System is designed to streamline hospital and clinic operations digitally.
 
-The application provides functionalities for:
+The application provides:
 
+### PATIENT
+- Register and login
+- View doctors
+- Book appointments
+- Access healthcare services
+
+### DOCTOR
+- Manage appointments
+- Handle patient-related workflows
+- Maintain healthcare information
+
+### SYSTEM / ADMIN
+- Authentication handling
+- Dashboard management
+- Data management
+- Healthcare workflow monitoring
+
+Core modules include:
+
+- Authentication & Authorization
 - Patient Management
 - Doctor Management
 - Appointment Booking
-- Authentication & Authorization
-- Dashboard Management
-- Healthcare Data Handling
-- Responsive User Interface
-
-The system follows a modular architecture using modern web technologies for scalability, maintainability, and security.
-
----
-
-#  2. System Architecture
-
-The project follows a **Full Stack Client-Server Architecture**.
-
-```
-Frontend (React.js)
-        │
-        ▼
-REST API Communication
-        │
-        ▼
-Backend Server (Node.js + Express.js)
-        │
-        ▼
-MongoDB Database
-```
+- Dashboard System
+- REST API Integration
+- Protected Routes
+- Responsive UI
+- Secure Backend Processing
 
 ---
 
-# 3. Frontend Architecture
+# Repository Structure
 
-The frontend is developed using **React.js** with reusable components and client-side routing.
-
-### Frontend Responsibilities
-
-- UI Rendering
-- Route Navigation
-- API Communication
-- Authentication Handling
-- State Management
-- Form Validation
-- Responsive Design
-
-### Frontend Features
-
-- Responsive Dashboard
-- Doctor Listing
-- Appointment Booking
-- Authentication Pages
-- Dynamic Routing
-- Protected Pages
-
----
-
-# ⚙️ 4. Backend Architecture
-
-The backend is developed using **Node.js** and **Express.js** following REST API architecture.
-
-### Backend Responsibilities
-
-- API Development
-- Database Management
-- Authentication
-- Authorization
-- Request Validation
-- Error Handling
-- Business Logic Processing
-
-### Backend Features
-
-- JWT Authentication
-- Secure APIs
-- MongoDB Integration
-- CRUD Operations
-- Appointment Management
-- Doctor & Patient Data Handling
-
----
-
-#  5. Complete Project Structure
-
-```
+```plaintext
 Health-CareManagement/
 │
 ├── frontend/
@@ -129,17 +75,132 @@ Health-CareManagement/
 
 ---
 
-#  6. Installation & Setup
+# Tech Stack
 
-## 1️⃣ Clone Repository
+## Frontend
+- React.js
+- Vite
+- React Router DOM
+- Axios
+- Bootstrap / CSS
+
+## Backend
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- JWT Authentication
+- bcryptjs
+- dotenv
+- CORS
+
+---
+
+# Features
+
+- Secure User Authentication
+- JWT Authorization
+- Protected Routes
+- Patient Management
+- Doctor Management
+- Appointment Booking System
+- Dashboard System
+- CRUD Operations
+- REST API Architecture
+- Responsive User Interface
+- Backend Validation
+- Secure API Communication
+
+---
+
+# API Modules
+
+| API | Purpose |
+|------|---------|
+| Auth API | Registration, Login, Logout |
+| Doctor API | Doctor CRUD and listing |
+| Patient API | Patient handling |
+| Appointment API | Appointment booking and cancellation |
+
+---
+
+# Frontend Routes
+
+| Route | Purpose |
+|------|---------|
+| `/` | Home Page |
+| `/login` | Login |
+| `/register` | Registration |
+| `/dashboard` | Dashboard |
+| `/appointments` | Appointment Management |
+| `/doctors` | Doctor Listing |
+
+---
+
+# Backend Routes
+
+## Authentication
+
+| Method | Endpoint | Purpose |
+|------|------|---------|
+| POST | `/register` | Register user |
+| POST | `/login` | Login |
+| GET | `/logout` | Logout |
+
+## Doctor APIs
+
+| Method | Endpoint | Purpose |
+|------|------|---------|
+| GET | `/doctors` | Fetch doctors |
+| POST | `/doctors` | Add doctor |
+| PUT | `/doctors/:id` | Update doctor |
+| DELETE | `/doctors/:id` | Delete doctor |
+
+## Appointment APIs
+
+| Method | Endpoint | Purpose |
+|------|------|---------|
+| POST | `/appointments` | Book appointment |
+| GET | `/appointments` | Fetch appointments |
+| DELETE | `/appointments/:id` | Cancel appointment |
+
+---
+
+# Database Models
+
+## Doctor Model
+Stores:
+- Name
+- Specialization
+- Experience
+- Availability
+- Contact Details
+
+## Patient Model
+Stores:
+- Name
+- Email
+- Contact Details
+- Medical Information
+
+## Appointment Model
+Stores:
+- Appointment Date
+- Doctor Details
+- Patient Details
+- Status
+
+---
+
+# Installation & Setup
+
+## Clone Repository
 
 ```bash
 git clone https://github.com/Geetavarshini/Heath-CareManagement.git
 ```
 
----
-
-## 2️⃣ Navigate to Project Directory
+## Navigate
 
 ```bash
 cd Heath-CareManagement
@@ -149,40 +210,19 @@ cd Heath-CareManagement
 
 # Frontend Setup
 
-## Install Frontend Dependencies
-
 ```bash
 cd frontend
 npm install
+npm run dev
 ```
 
 ---
 
-## Start Frontend Server
-
-```bash
-npm run dev
-```
-
-Frontend runs locally
-
-# ⚙️ Backend Setup
-
-## Install Backend Dependencies
+# Backend Setup
 
 ```bash
 cd backend
 npm install
-```
-
----
-
-## Create `.env` File
-
-
-## Start Backend Server
-
-```bash
 npm start
 ```
 
@@ -192,176 +232,67 @@ or
 nodemon server.js
 ```
 
-Backend runs locally
-
 ---
 
-#  7. Technology Stack
+# Authentication & Security
 
-| Technology | Purpose |
-| :--- | :--- |
-| React.js | Frontend framework |
-| Node.js | Backend runtime |
-| Express.js | REST API framework |
-| MongoDB | Database |
-| Mongoose | MongoDB ODM |
-| JWT | Authentication |
-| Axios | API communication |
-| React Router DOM | Client-side routing |
-| Bootstrap / CSS | UI styling |
-| Vite | Frontend build tool |
-| dotenv | Environment variables |
-| bcryptjs | Password hashing |
-| cors | Frontend-backend communication |
+Security features include:
 
----
-
-#  8. Frontend Routing Structure
-
-| Route | Purpose |
-| :--- | :--- |
-| `/` | Home page |
-| `/login` | User login |
-| `/register` | User registration |
-| `/dashboard` | User dashboard |
-| `/appointments` | Appointment management |
-| `/doctors` | Doctor listing |
-
----
-
-#  9. Backend API Routes
-
-## Authentication Routes
-
-| Method | Endpoint | Purpose |
-| :--- | :--- | :--- |
-| POST | `/register` | Register new user |
-| POST | `/login` | User login |
-| GET | `/logout` | Logout user |
-
----
-
-## Doctor Routes
-
-| Method | Endpoint | Purpose |
-| :--- | :--- | :--- |
-| GET | `/doctors` | Fetch all doctors |
-| POST | `/doctors` | Add new doctor |
-| PUT | `/doctors/:id` | Update doctor |
-| DELETE | `/doctors/:id` | Delete doctor |
-
----
-
-## Appointment Routes
-
-| Method | Endpoint | Purpose |
-| :--- | :--- | :--- |
-| POST | `/appointments` | Book appointment |
-| GET | `/appointments` | Fetch appointments |
-| DELETE | `/appointments/:id` | Cancel appointment |
-
----
-
-# 🗄️ 10. Database Models
-
-## 👨‍⚕️ Doctor Model
-
-Stores:
-
-- Doctor Name
-- Specialization
-- Experience
-- Availability
-- Contact Information
-
----
-
-## 👤 Patient Model
-
-Stores:
-
-- Patient Name
-- Email
-- Contact Details
-- Medical Information
-
----
-
-## 📅 Appointment Model
-
-Stores:
-
-- Appointment Date
-- Doctor Details
-- Patient Details
-- Appointment Status
-
----
-
-# 🔐 11. Authentication & Security
-
-The application implements secure authentication mechanisms:
-
-- JWT Token Authentication
-- Password Hashing using bcrypt
+- JWT Authentication
+- Password Hashing (bcrypt)
 - Protected Routes
 - Environment Variable Security
 - Secure API Communication
 
 ---
 
-# 🔄 12. Frontend & Backend Communication
+# Frontend & Backend Communication
 
-The frontend communicates with the backend using REST APIs.
+Frontend communicates with backend using REST APIs via Axios.
 
-### Communication Features
+Includes:
 
-- Axios API requests
-- Dynamic data rendering
-- Authentication token handling
-- Real-time UI updates
-- Error handling & validations
-
----
-
-# ⚡ 13. Performance Optimizations
-
-- Modular architecture
-- Reusable components
-- Optimized API communication
-- Efficient database queries
-- Lightweight frontend rendering
-- Fast development using Vite
+- API Requests
+- Dynamic Rendering
+- Token Handling
+- Validation
+- Error Handling
 
 ---
 
-# ✅ 14. Features Summary
+# Performance Optimizations
 
-- User Authentication
-- Doctor Management
-- Patient Management
-- Appointment Booking
-- Dashboard System
-- REST API Integration
-- Responsive UI
-- Protected Routes
-- Full Stack Architecture
+- Modular Architecture
+- Reusable Components
+- Efficient Database Queries
+- Lightweight Rendering
+- Fast Development using Vite
 
 ---
 
-# 📌 15. Future Enhancements
+# Future Enhancements
 
-- Online Payment Integration
+- Online Payments
 - Video Consultation
 - Real-Time Notifications
-- Medical Report Upload
+- Medical Report Uploads
 - AI-Based Health Suggestions
 - Dark Mode
 
 ---
 
-# 👩‍💻 Developed By
+# What I Learned
 
-**Team-30**  
+- Full Stack MERN Development
+- REST API Design
+- Authentication & Authorization
+- MongoDB Schema Design
+- Frontend + Backend Integration
+- Secure Route Handling
+- Deployment & Debugging
+- Real-World Project Architecture
+
+--
+
+Developed by Team-30  
 B.Tech – Anurag University
----
